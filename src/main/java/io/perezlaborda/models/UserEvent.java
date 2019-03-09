@@ -1,32 +1,25 @@
 package io.perezlaborda.models;
 
-
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "events", schema = "bench")
 public class UserEvent {
 
-    @EmbeddedId
-    private UserEventPk pk;
-    @Column(name = "country_code")
     private String countryCode;
-    @Column(name = "data")
     private String data;
+    private String userId;
+    private Long datetime;
 
-    protected UserEvent(){}
-
-    public UserEvent(UserEventPk pk, String countryCode, String data) {
-        this.pk = pk;
+    public UserEvent(String userId, Long datetime, String countryCode, String data) {
+        this.userId = userId;
+        this.datetime = datetime;
         this.countryCode = countryCode;
         this.data = data;
     }
 
-    public UserEventPk getPk() {
-        return pk;
+    public String getUserId() {
+        return userId;
+    }
+
+    public Long getDatetime() {
+        return datetime;
     }
 
     public String getCountryCode() {
@@ -40,9 +33,10 @@ public class UserEvent {
     @Override
     public String toString() {
         return "UserEvent{" +
-                "pk=" + pk +
-                ", countryCode='" + countryCode + '\'' +
+                "countryCode='" + countryCode + '\'' +
                 ", data='" + data + '\'' +
+                ", userId='" + userId + '\'' +
+                ", datetime=" + datetime +
                 '}';
     }
 }

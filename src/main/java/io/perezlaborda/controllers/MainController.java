@@ -34,9 +34,7 @@ public class MainController {
 
     @RequestMapping("/all")
     public String all(){
-        //List<UserEvent> list = new ArrayList<>();
-        long count = service.count();// .iterator().forEachRemaining(list::add);
-        //list.forEach(System.out::println);
+        long count = service.count();
         return "termine: " + count;
     }
 
